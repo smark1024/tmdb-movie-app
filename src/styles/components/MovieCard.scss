@@ -35,6 +35,16 @@
         height: 100%;
         object-fit: cover;
         display: block;
+
+        // BEM Modifier 추가
+        &--no-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $color-border;
+            color: $color-text-secondary;
+            font-size: 13px;
+        }
     }
 
     &__info {

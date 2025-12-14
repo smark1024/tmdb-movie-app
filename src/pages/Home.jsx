@@ -19,13 +19,13 @@ const Home = () => {
     const [selectedMovie, setSelectedMovie] = useState(null); // 선택된 영화 (Modal용)
 
     // 검색 시 초기화
-    const handleSearch = (keyword) => {
+    const handleSearch = useCallback((keyword) => {
         setSearchKeyword(keyword);
         setPage(1);
         setMovies([]);
         setHasMore(true);
         setIsSearching(!!keyword.trim());
-    };
+    }, []);
 
     // 페이지나 검색어가 바뀔 때 데이터 로드
     useEffect(() => {
@@ -70,9 +70,9 @@ const Home = () => {
     const targetRef = useIntersectionObserver(loadMore);
 
     // 영화 클릭 핸들러
-    const handleMovieClick = (movie) => {
+    const handleMovieClick = useCallback((movie) => {
         setSelectedMovie(movie);
-    };
+    }, []);
 
     // 모달 닫기 핸들러
     const closeModal = () => {
@@ -92,7 +92,7 @@ const Home = () => {
                     <MovieCard
                         key={`${movie.id}-${movie.release_date}`} // 키 중복 방지 강화
                         movie={movie}
-                        onClick={() => handleMovieClick(movie)} // 클릭 이벤트 전달
+                        onClick={handleMovieClick} // 클릭 이벤트 전달
                     />
                 ))}
 

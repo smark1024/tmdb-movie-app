@@ -1,14 +1,18 @@
-import React from "react";
+import React, { memo } from "react";
 import "../styles/components/MovieCard.scss";
 
 const IMAGE_BASE_URL = import.meta.env.VITE_TMDB_IMAGE_URL + "/w500";
 
-const MovieCard = ({ movie, onClick }) => {
+const MovieCard = memo(({ movie, onClick }) => {
     // 포스터 경로가 있는지 확인
     const hasPoster = !!movie.poster_path;
 
+    const handleClick = () => {
+        onClick(movie);
+    };
+
     return (
-        <div className="movie-card" onClick={onClick}>
+        <div className="movie-card" onClick={handleClick}>
             <div className="movie-card__poster-wrapper">
                 {hasPoster ? (
                     <img
@@ -19,17 +23,7 @@ const MovieCard = ({ movie, onClick }) => {
                     />
                 ) : (
                     // 포스터가 없을 때 보여줄 대체 UI
-                    <div
-                        className="movie-card__poster"
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            backgroundColor: "#333",
-                            color: "#777",
-                            fontSize: "0.8rem",
-                        }}
-                    >
+                    <div className="movie-card__poster movie-card__poster--no-image">
                         <span>No Image</span>
                     </div>
                 )}
@@ -42,6 +36,6 @@ const MovieCard = ({ movie, onClick }) => {
             </div>
         </div>
     );
-};
+});
 
 export default MovieCard;

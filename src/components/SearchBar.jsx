@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import "../styles/components/SearchBar.scss";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = memo(({ onSearch }) => {
     const [keyword, setKeyword] = useState("");
 
     const handleSubmit = (e) => {
@@ -43,6 +43,6 @@ const SearchBar = ({ onSearch }) => {
             </form>
         </div>
     );
-};
+});
 
 export default SearchBar;
