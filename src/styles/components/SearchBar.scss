@@ -1,59 +1,59 @@
 .search-bar {
-  margin-bottom: 24px;
-  width: 100%;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-
-  &__form {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  &__input {
+    margin-bottom: 24px;
     width: 100%;
-    padding: 16px 24px;
-    padding-right: 50px;
-    background-color: rgba(#1f1f1f, 0.8); // $color-surface 직접 사용
-    border: 1px solid #333333; // $color-border 직접 사용
-    border-radius: 30px;
-    color: #ffffff;
-    font-size: 18px; // 1.1rem approx
-    outline: none;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 
-    &::placeholder {
-      color: #b3b3b3;
+    &__form {
+        position: relative;
+        display: flex;
+        align-items: center;
     }
 
-    &:focus {
-      background-color: rgba(#1f1f1f, 1);
-      border-color: #e50914;
-      box-shadow: 0 0 0 2px rgba(#e50914, 0.3);
-    }
-  }
+    &__input {
+        width: 100%;
+        padding: 16px 24px;
+        padding-right: 50px;
+        background-color: rgba(#1f1f1f, 0.8); // $color-surface 직접 사용
+        border: 1px solid #333333; // $color-border 직접 사용
+        border-radius: 30px;
+        color: #ffffff;
+        font-size: 18px; // 1.1rem approx
+        outline: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
 
-  &__button {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 8px;
-    border-radius: 50%;
-    background: transparent;
-    color: #b3b3b3;
-    transition: color 0.3s;
-    cursor: pointer;
+        &::placeholder {
+            color: #b3b3b3;
+        }
 
-    &:hover {
-      color: #e50914;
+        &:focus {
+            background-color: rgba(#1f1f1f, 1);
+            border-color: #e50914;
+            box-shadow: 0 0 0 2px rgba(#e50914, 0.3);
+        }
     }
 
-    svg {
-      width: 20px;
-      height: 20px;
+    &__button {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 8px;
+        border-radius: 50%;
+        background: transparent;
+        color: #b3b3b3;
+        transition: color 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            color: #e50914;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
-  }
 }

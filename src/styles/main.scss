@@ -1,33 +1,32 @@
-@use 'variables' as *;
-@use 'reset';
+@use "variables" as *;
+@use "reset";
 
 body {
-  background-color: $color-background;
-  color: $color-text-primary;
-  line-height: 1.5;
+    background-color: $color-background;
+    color: $color-text-primary;
+    line-height: 1.5;
 }
 
 #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 // 스크롤바 커스텀
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: $color-background;
+    background: $color-background;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $color-border;
-  border-radius: 4px;
-  
-  &:hover {
-    background: $color-text-secondary;
-  }
-}
+    background: $color-border;
+    border-radius: 4px;
 
+    &:hover {
+        background: $color-text-secondary;
+    }
+}
