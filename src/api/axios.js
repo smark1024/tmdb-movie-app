@@ -7,7 +7,7 @@ const tmdbApi = axios.create({
     baseURL: BASE_URL,
     params: {
         api_key: API_KEY,
-        language: "ko-KR", // 한국어 결과
+        language: "ko-KR",
     },
 });
 

@@ -5,7 +5,7 @@ const IMAGE_BASE_URL = import.meta.env.VITE_TMDB_IMAGE_URL + "/original";
 
 const Modal = ({ movie, onClose }) => {
     const modalRef = useRef();
-    const [isImageLoaded, setIsImageLoaded] = useState(false); // 이미지 로딩 상태
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
     useEffect(() => {
         document.body.style.overflow = "hidden";
@@ -33,9 +33,11 @@ const Modal = ({ movie, onClose }) => {
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content" ref={modalRef} role="dialog" aria-modal="true">
-                <button className="modal-content__close" onClick={onClose} aria-label="닫기">
-                    ✕
-                </button>
+                <button
+                    className="modal-content__close"
+                    onClick={onClose}
+                    aria-label="닫기"
+                ></button>
 
                 {movie.backdrop_path ? (
                     <>
@@ -46,12 +48,12 @@ const Modal = ({ movie, onClose }) => {
                             src={`${IMAGE_BASE_URL}${movie.backdrop_path}`}
                             alt={movie.title}
                             className="modal-content__backdrop"
-                            onLoad={() => setIsImageLoaded(true)} // 로딩 완료 시 상태 변경
-                            style={{ display: isImageLoaded ? "block" : "none" }} // 로딩 전에는 숨김
+                            onLoad={() => setIsImageLoaded(true)}
+                            style={{ display: isImageLoaded ? "block" : "none" }}
                         />
                     </>
                 ) : (
-                    <div style={{ height: "200px", background: "#333" }} />
+                    <div className="modal-content__backdrop--no-image" />
                 )}
 
                 <div className="modal-content__body">

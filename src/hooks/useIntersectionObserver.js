@@ -13,9 +13,9 @@ const useIntersectionObserver = (callback, options = {}) => {
                 });
             },
             {
-                root: null, // 뷰포트 기준
+                root: null,
                 rootMargin: "0px",
-                threshold: 0.1, // 10% 정도 보이면 실행
+                threshold: 0.1,
                 ...options,
             }
         );

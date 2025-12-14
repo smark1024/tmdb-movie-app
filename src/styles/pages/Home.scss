@@ -1,55 +1,51 @@
-.home-page {
-  padding: 24px;
-  max-width: 1280px;
-  margin: 0 auto;
-  width: 100%;
-
-  &__title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    text-align: center;
-    
-    @include tablet {
-      font-size: 32px;
-    }
-  }
-
-  &__grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    // 모든 자식 요소(MovieCard, SkeletonCard)에 적용
-    > * {
-      // 모바일 기본 2열: (100% - gap 1개) / 2
-      width: calc((100% - 16px) / 2);
-    }
-
-    @include tablet {
-      gap: 24px;
-      
-      > * {
-        // 태블릿 3열: (100% - gap 2개) / 3
-        width: calc((100% - 48px) / 3);
-      }
-    }
-
-    @include desktop {
-      > * {
-        // 데스크톱 5열: (100% - gap 4개) / 5
-        width: calc((100% - 96px) / 5);
-      }
-    }
-  }
-
-  &__no-result {
+.main-content {
+    padding: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
     width: 100%;
-    text-align: center;
-    padding: 32px;
-    font-size: 19px;
-    color: #b3b3b3;
-  }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        text-align: center;
+
+        @include tablet {
+            font-size: 32px;
+        }
+    }
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        > * {
+            width: calc((100% - 16px) / 2);
+        }
+
+        @include tablet {
+            gap: 24px;
+
+            > * {
+                width: calc((100% - 48px) / 3);
+            }
+        }
+
+        @include desktop {
+            > * {
+                width: calc((100% - 96px) / 5);
+            }
+        }
+    }
+
+    &__no-result {
+        width: 100%;
+        text-align: center;
+        padding: 32px;
+        font-size: 19px;
+        color: #b3b3b3;
+    }
 }

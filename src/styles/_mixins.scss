@@ -19,7 +19,6 @@
     }
 }
 
-// Flexbox Helpers
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -32,7 +31,6 @@
     align-items: center;
 }
 
-// Text Ellipsis (말줄임)
 @mixin text-ellipsis($lines: 1) {
     overflow: hidden;
     text-overflow: ellipsis;

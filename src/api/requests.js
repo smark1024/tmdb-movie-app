@@ -8,7 +8,6 @@ const requests = {
     fetchSearch: "/search/movie",
 };
 
-// page 파라미터 추가
 export const fetchMovies = async (fetchUrl, page = 1) => {
     try {
         const response = await tmdbApi.get(fetchUrl, {
@@ -21,7 +20,6 @@ export const fetchMovies = async (fetchUrl, page = 1) => {
     }
 };
 
-// page 파라미터 추가
 export const searchMovies = async (query, page = 1) => {
     try {
         const response = await tmdbApi.get(requests.fetchSearch, {

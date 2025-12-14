@@ -9,7 +9,7 @@
 }
 
 .skeleton-card {
-    width: 100%; // Flex 아이템 너비에 맞춰짐
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -41,13 +41,13 @@
     &__text {
         &--title {
             width: 80%;
-            height: 24px; // MovieCard 높이와 일치 (px)
+            height: 24px;
             margin-bottom: 4px;
         }
 
         &--rating {
             width: 40%;
-            height: 21px; // MovieCard 평점 높이와 일치 (px)
+            height: 21px;
             margin-top: auto;
         }
     }

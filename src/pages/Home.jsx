@@ -1,22 +1,27 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import requests, { fetchMovies, searchMovies } from "../api/requests";
 import MovieCard from "../components/MovieCard";
 import SkeletonCard from "../components/SkeletonCard";
 import SearchBar from "../components/SearchBar";
-import Modal from "../components/Modal"; // Modal import
+import Modal from "../components/Modal";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import "../styles/pages/Home.scss";
 
 const Home = () => {
+    // 영화 목록 저장
     const [movies, setMovies] = useState([]);
+    // 로딩 상태
     const [loading, setLoading] = useState(false);
+    // 페이지 번호
     const [page, setPage] = useState(1);
+    // 더 불러올 영화가 있는지 여부
     const [hasMore, setHasMore] = useState(true);
-
+    // 검색 상태
     const [isSearching, setIsSearching] = useState(false);
+    // 검색어 저장
     const [searchKeyword, setSearchKeyword] = useState("");
-
-    const [selectedMovie, setSelectedMovie] = useState(null); // 선택된 영화 (Modal용)
+    // 선택된 영화 저장
+    const [selectedMovie, setSelectedMovie] = useState(null);
 
     // 검색 시 초기화
     const handleSearch = useCallback((keyword) => {
@@ -67,7 +72,16 @@ const Home = () => {
         }
     }, [loading, hasMore]);
 
-    const targetRef = useIntersectionObserver(loadMore);
+    const observerOptions = useMemo(
+        () => ({
+            root: null,
+            rootMargin: "0px 0px 100px 0px",
+            threshold: 0.1,
+        }),
+        []
+    );
+
+    const targetRef = useIntersectionObserver(loadMore, observerOptions);
 
     // 영화 클릭 핸들러
     const handleMovieClick = useCallback((movie) => {
@@ -80,24 +94,24 @@ const Home = () => {
     };
 
     return (
-        <div className="home-page">
-            <h1 className="home-page__title">
+        <div className="main-content">
+            <h1 className="main-content__title">
                 {isSearching ? `Search Results: "${searchKeyword}"` : "Trending Movies"}
             </h1>
 
             <SearchBar onSearch={handleSearch} />
 
-            <div className="home-page__grid">
+            <div className="main-content__grid">
                 {movies.map((movie) => (
                     <MovieCard
-                        key={`${movie.id}-${movie.release_date}`} // 키 중복 방지 강화
+                        key={`${movie.id}-${movie.release_date}`}
                         movie={movie}
-                        onClick={handleMovieClick} // 클릭 이벤트 전달
+                        onClick={handleMovieClick}
                     />
                 ))}
 
                 {loading &&
-                    Array.from({ length: 10 }).map((_, index) => (
+                    Array.from({ length: 20 }).map((_, index) => (
                         <SkeletonCard key={`skeleton-${index}`} />
                     ))}
             </div>
@@ -107,11 +121,11 @@ const Home = () => {
             )}
 
             {!loading && !hasMore && movies.length > 0 && (
-                <div className="home-page__no-result">모든 영화를 불러왔습니다. 🎉</div>
+                <div className="main-content__no-result">모든 영화를 불러왔습니다. 🎉</div>
             )}
 
             {!loading && movies.length === 0 && (
-                <div className="home-page__no-result">검색 결과가 없습니다. 😢</div>
+                <div className="main-content__no-result">검색 결과가 없습니다. 😢</div>
             )}
 
             {/* 모달 렌더링 (selectedMovie가 있을 때만) */}

@@ -11,8 +11,6 @@ const SearchBar = memo(({ onSearch }) => {
 
     const handleChange = (e) => {
         setKeyword(e.target.value);
-        // 실시간 검색을 원하면 여기서 onSearch(e.target.value) 호출 가능
-        // 지금은 엔터/클릭 시 검색되도록 함
     };
 
     return (
